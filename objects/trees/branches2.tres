@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://de0leu0yo7j1v"]
+
+[ext_resource type="Texture2D" uid="uid://b7lgcjo7ol78u" path="res://meshes/trees/treefoliagepack/textures/branch-2-02.png" id="1_yif0b"]
+[ext_resource type="Texture2D" uid="uid://f6f5emi44ey8" path="res://meshes/trees/treefoliagepack/textures/leaves2-2_Normal.png" id="2_lvynb"]
+
+[resource]
+resource_name = "branch-02"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_yif0b")
+normal_enabled = true
+normal_texture = ExtResource("2_lvynb")
+subsurf_scatter_strength = 1.0
+subsurf_scatter_transmittance_enabled = true
+backlight_enabled = true
+backlight = Color(0.89641, 0.84383, 0.596512, 1)

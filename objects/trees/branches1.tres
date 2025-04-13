@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://c4fo3p0vrxh87"]
+
+[ext_resource type="Texture2D" uid="uid://4jnusiu4kmg4" path="res://meshes/trees/treefoliagepack/textures/branch-2-01.png" id="1_r4evf"]
+[ext_resource type="Texture2D" uid="uid://domu5m0ogt4nw" path="res://meshes/trees/treefoliagepack/textures/bark_Height.png" id="2_avhll"]
+[ext_resource type="Texture2D" uid="uid://b1gt2ajsb4l50" path="res://meshes/trees/treefoliagepack/textures/leaves2-1_Normal.png" id="3_lvtk0"]
+
+[resource]
+resource_name = "branch-01"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_r4evf")
+normal_enabled = true
+normal_texture = ExtResource("3_lvtk0")
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("2_avhll")
+subsurf_scatter_strength = 1.0
+backlight_enabled = true
+backlight = Color(0.796078, 0.788235, 0.576471, 1)

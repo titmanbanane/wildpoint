@@ -1,0 +1,356 @@
+[gd_scene load_steps=11 format=3 uid="uid://bufrtsjry5tl8"]
+
+[ext_resource type="Script" uid="uid://8liejtc0iovu" path="res://objects/player/player.gd" id="1_0w4yv"]
+
+[sub_resource type="Curve3D" id="Curve3D_cogli"]
+_data = {
+"points": PackedVector3Array(-0.25, 0, 0, 0, 0.2, 0, -0.65, -0.4, 0, -0.25, 0, 0, 0.25, 0, 0, 0, 0, 0, 0, 0.2, 0, 0, 0, 0, 0.65, -0.4, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_skbp4"]
+auto_exposure_speed = 6.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_yfx8y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gxqcy"]
+radius = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t0pou"]
+height = 0.15
+radius = 0.25
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m0bj7"]
+radius = 0.45
+
+[sub_resource type="SphereMesh" id="SphereMesh_g88h8"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57vxe"]
+size = Vector2(350, 525)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sd6oo"]
+size = Vector2(300, 300)
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+floor_max_angle = 1.0472
+script = ExtResource("1_0w4yv")
+
+[node name="head_path" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+curve = SubResource("Curve3D_cogli")
+
+[node name="headPathFollow" type="PathFollow3D" parent="head_path"]
+transform = Transform3D(4.37114e-08, -3.96552e-07, -0.999998, 8.74228e-08, -0.999998, 3.96552e-07, -1, -8.74226e-08, -4.37113e-08, 2.37456e-07, -5.53881e-14, 0)
+progress = 0.811694
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 7.45058e-09, 1.7, 0)
+
+[node name="camera_rotation" type="Node3D" parent="head"]
+
+[node name="Camera3D" type="Camera3D" parent="head/camera_rotation"]
+transform = Transform3D(1, -9.53521e-08, 1.25534e-08, 9.53521e-08, 1, 0, -1.25534e-08, 1.19699e-15, 1, 0, 0.05, -0.15)
+cull_mask = 1048573
+attributes = SubResource("CameraAttributesPractical_skbp4")
+doppler_tracking = 1
+current = true
+fov = 77.0
+far = 10000.0
+
+[node name="reach" type="RayCast3D" parent="head/camera_rotation/Camera3D"]
+transform = Transform3D(1, 7.10543e-15, -7.99361e-15, 7.10543e-15, 1, -3.55272e-15, -1.15463e-14, 2.35572e-15, 1, 0, 0, 0)
+target_position = Vector3(0, 0, -3)
+
+[node name="Camera3D" type="Camera3D" parent="head/camera_rotation/Camera3D"]
+transform = Transform3D(-1, -1.50263e-23, -8.74227e-08, 1.1967e-22, 1, -3.17637e-22, 8.74227e-08, 0, -1, 0, 0, -2.368)
+
+[node name="hand_l" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="hand_l"]
+transform = Transform3D(0.078212, 1.86265e-09, 3.72529e-09, 0, 0.078212, -1.76951e-08, 3.72529e-09, -3.72529e-09, 0.078212, 0, 0, 0)
+mesh = SubResource("SphereMesh_yfx8y")
+
+[node name="hand_r" type="Node3D" parent="."]
+
+[node name="ik_points" type="Node" parent="."]
+
+[node name="foot_l" type="Node3D" parent="ik_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279304, 0, 0)
+
+[node name="foot_r" type="Node3D" parent="ik_points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0, 0)
+
+[node name="ik_rays" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.236888)
+
+[node name="ik_cast_r" type="RayCast3D" parent="ik_rays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198638, 0.0557775, 0)
+
+[node name="ik_cast_l" type="RayCast3D" parent="ik_rays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199, 0.056, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4.85596e-08, 1, 0)
+shape = SubResource("CapsuleShape3D_gxqcy")
+
+[node name="floorcast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4.85596e-08, 0, 0)
+shape = SubResource("CylinderShape3D_t0pou")
+target_position = Vector3(0, -0.075, 0.15)
+
+[node name="climbcast" type="RayCast3D" parent="."]
+transform = Transform3D(1, -3.43166e-15, 1.74846e-07, 3.55271e-15, 1, -5.96046e-08, -1.74846e-07, 5.96046e-08, 1, 0, 0.8, 0)
+target_position = Vector3(0, 0, -1.25)
+
+[node name="climb_destination" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, -1.25449)
+target_position = Vector3(0, -2.5, 0)
+
+[node name="climb_cancel" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
+target_position = Vector3(0, 0, -1.5)
+
+[node name="climb_clearence" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_m0bj7")
+target_position = Vector3(0, 0, 0)
+
+[node name="small_climbcast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.589785, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="gui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fps_label" type="Label" parent="gui"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fps: 000"
+
+[node name="npc_label" type="Label" parent="gui"]
+layout_mode = 0
+offset_left = 68.0
+offset_right = 181.0
+offset_bottom = 26.0
+text = "npc count: 000"
+
+[node name="speed_label" type="Label" parent="gui"]
+layout_mode = 0
+offset_left = 190.0
+offset_right = 250.0
+offset_bottom = 26.0
+text = "speed: 000"
+
+[node name="popup" type="Label" parent="gui"]
+layout_mode = 0
+offset_left = -199.0
+offset_top = 26.0
+offset_right = -129.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 35
+text = "guuuuun"
+horizontal_alignment = 1
+
+[node name="reticle" type="Control" parent="gui"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="gui/reticle"]
+mesh = SubResource("SphereMesh_g88h8")
+
+[node name="Label" type="Label" parent="gui"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+[node name="stats" type="RichTextLabel" parent="gui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0243056
+anchor_top = -0.00154321
+anchor_right = 0.0078125
+anchor_bottom = 0.282407
+offset_left = 1025.0
+offset_right = 1135.0
+offset_bottom = 26.0
+text = "health"
+metadata/_edit_use_anchors_ = true
+
+[node name="pause" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu" type="VBoxContainer" parent="pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -61.5
+offset_right = 62.0
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(62, 61)
+alignment = 1
+
+[node name="quit" type="Button" parent="pause/menu"]
+layout_mode = 2
+text = "quit"
+icon_alignment = 1
+expand_icon = true
+
+[node name="v separator" type="MarginContainer" parent="pause/menu"]
+custom_minimum_size = Vector2(0, 16.767)
+layout_mode = 2
+
+[node name="resume" type="Button" parent="pause/menu"]
+layout_mode = 2
+text = "resume"
+icon_alignment = 1
+expand_icon = true
+
+[node name="v separator2" type="MarginContainer" parent="pause/menu"]
+custom_minimum_size = Vector2(0, 16.767)
+layout_mode = 2
+
+[node name="parameters" type="Button" parent="pause/menu"]
+layout_mode = 2
+text = "parameters
+"
+icon_alignment = 1
+expand_icon = true
+
+[node name="inventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="outside_inventory" type="Control" parent="inventory"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_right = -1152.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="inventory/outside_inventory"]
+z_index = -10
+layout_mode = 0
+offset_left = 764.0
+offset_top = 60.0
+offset_right = 1114.0
+offset_bottom = 585.0
+mouse_filter = 1
+color = Color(0.247059, 0.247059, 0.247059, 0.839216)
+
+[node name="inventory_area" type="Area2D" parent="inventory/outside_inventory"]
+z_index = -5
+position = Vector2(939, 322)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="inventory/outside_inventory/inventory_area"]
+shape = SubResource("RectangleShape2D_57vxe")
+
+[node name="not_inventory_area" type="Area2D" parent="inventory/outside_inventory"]
+z_index = -5
+position = Vector2(939, 322)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="inventory/outside_inventory/not_inventory_area"]
+polygon = PackedVector2Array(-175, -265, 175, -265, 175, 265, 202, 288, 202, -288, -202, -288)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="inventory/outside_inventory/not_inventory_area"]
+rotation = -3.14159
+polygon = PackedVector2Array(-175, -265, 175, -265, 175, 265, 202, 288, 202, -288, -202, -288)
+
+[node name="player_inventory" type="Control" parent="inventory"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="inventory/player_inventory"]
+z_index = -10
+layout_mode = 0
+offset_left = 55.0
+offset_top = 60.0
+offset_right = 405.0
+offset_bottom = 585.0
+mouse_filter = 1
+color = Color(0.247059, 0.247059, 0.247059, 0.839216)
+
+[node name="ColorRect2" type="ColorRect" parent="inventory/player_inventory"]
+z_index = -10
+layout_mode = 0
+offset_left = 426.0
+offset_top = 174.0
+offset_right = 726.0
+offset_bottom = 474.0
+pivot_offset = Vector2(150, 150)
+mouse_filter = 1
+color = Color(0.247059, 0.247059, 0.247059, 0.839216)
+
+[node name="inventory_area" type="Area2D" parent="inventory/player_inventory"]
+z_index = -5
+position = Vector2(230, 322)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="inventory/player_inventory/inventory_area"]
+shape = SubResource("RectangleShape2D_57vxe")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="inventory/player_inventory/inventory_area"]
+position = Vector2(346, 2)
+shape = SubResource("RectangleShape2D_sd6oo")
+
+[node name="not_inventory_area" type="Area2D" parent="inventory/player_inventory"]
+z_index = -5
+position = Vector2(230, 322)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="inventory/player_inventory/not_inventory_area"]
+polygon = PackedVector2Array(-175, -265, 175, -265, 175, 265, 202, 288, 202, -288, -202, -288)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="inventory/player_inventory/not_inventory_area"]
+rotation = -3.14159
+polygon = PackedVector2Array(-175, -265, 175, -265, 175, 265, 202, 288, 202, -288, -202, -288)
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+
+[connection signal="button_down" from="pause/menu/quit" to="." method="_on_quit_button_down"]
+[connection signal="button_down" from="pause/menu/resume" to="." method="_on_resume_button_down"]

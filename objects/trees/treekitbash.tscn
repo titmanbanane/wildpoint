@@ -1,0 +1,76 @@
+[gd_scene load_steps=19 format=3 uid="uid://c7ybykfqvvbg5"]
+
+[ext_resource type="PackedScene" uid="uid://chsobebi5rs3" path="res://objects/folliage/hedge_01.tscn" id="1_23bfe"]
+[ext_resource type="PackedScene" uid="uid://bx6656pac6a7j" path="res://objects/folliage/bush_01.tscn" id="2_23pnn"]
+[ext_resource type="PackedScene" uid="uid://senq3dlro2c8" path="res://objects/folliage/bush_02.tscn" id="3_vsvpu"]
+[ext_resource type="PackedScene" uid="uid://dnltt2r81q3e5" path="res://objects/folliage/bush_03.tscn" id="4_abdwm"]
+[ext_resource type="PackedScene" uid="uid://67lk8ibfgajl" path="res://objects/folliage/bush_04.tscn" id="5_ay3pd"]
+[ext_resource type="PackedScene" uid="uid://dt6yhurix7bbq" path="res://objects/folliage/bush_05.tscn" id="6_xr0q3"]
+[ext_resource type="PackedScene" uid="uid://vxe4g8bhiu1l" path="res://objects/folliage/clover_01.tscn" id="7_warlw"]
+[ext_resource type="PackedScene" uid="uid://bl5rgenod6mlv" path="res://objects/folliage/clover_02.tscn" id="8_4gwfo"]
+[ext_resource type="PackedScene" uid="uid://x8kpab707msj" path="res://objects/folliage/clover_03.tscn" id="9_jgv2f"]
+[ext_resource type="PackedScene" uid="uid://xh1nd0xq2g6w" path="res://objects/folliage/clover_04.tscn" id="10_nhbvg"]
+[ext_resource type="PackedScene" uid="uid://c4xdybxys4jxs" path="res://objects/folliage/clover_05.tscn" id="11_troth"]
+[ext_resource type="PackedScene" uid="uid://qiy0pxcaxhp" path="res://objects/folliage/grass_01.tscn" id="12_ve05b"]
+[ext_resource type="PackedScene" uid="uid://bi6hb1c4wsnjr" path="res://objects/folliage/grass_02.tscn" id="13_8copt"]
+[ext_resource type="PackedScene" uid="uid://c114w1f0xyqy4" path="res://objects/folliage/grass_03.tscn" id="14_suhel"]
+[ext_resource type="PackedScene" uid="uid://cmcd3wsmv07x0" path="res://objects/folliage/flowers_02.tscn" id="15_ep31r"]
+[ext_resource type="PackedScene" uid="uid://l0kp56yvjrua" path="res://objects/folliage/flowers_04.tscn" id="16_m7dnt"]
+[ext_resource type="PackedScene" uid="uid://rj8rda4ohry8" path="res://objects/folliage/flowers_01.tscn" id="17_d5uvu"]
+[ext_resource type="PackedScene" uid="uid://dedb01xqap7w2" path="res://objects/folliage/flowers_03.tscn" id="18_j880c"]
+
+[node name="treekitbash" type="Node3D"]
+
+[node name="Hedge-01" parent="." instance=ExtResource("1_23bfe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89897, 0, 2.27832)
+
+[node name="Bush-01" parent="." instance=ExtResource("2_23pnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67546, 0, 7.63316)
+
+[node name="Bush-02" parent="." instance=ExtResource("3_vsvpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65791, 0, 5.04257)
+
+[node name="Bush-03" parent="." instance=ExtResource("4_abdwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13998, 0, 7.56094)
+
+[node name="Bush-04" parent="." instance=ExtResource("5_ay3pd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16985, 0, 5.07096)
+
+[node name="Bush-05" parent="." instance=ExtResource("6_xr0q3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83281, 0, 22.1404)
+
+[node name="Clover-01" parent="." instance=ExtResource("7_warlw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80061, 0, 18.5958)
+
+[node name="Clover-02" parent="." instance=ExtResource("8_4gwfo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86558, 0, 16.8689)
+
+[node name="Clover-03" parent="." instance=ExtResource("9_jgv2f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.105, 0, 19.9351)
+
+[node name="Clover-04" parent="." instance=ExtResource("10_nhbvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13965, 0, 18.0241)
+
+[node name="Clover-05" parent="." instance=ExtResource("11_troth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08172, 0, 16.167)
+
+[node name="Grass-01" parent="." instance=ExtResource("12_ve05b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09683, 0, 9.64519)
+
+[node name="Grass-02" parent="." instance=ExtResource("13_8copt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95136, 0, 9.64519)
+
+[node name="Grass-03" parent="." instance=ExtResource("14_suhel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85011, 0, 9.63729)
+
+[node name="Flowers-02" parent="." instance=ExtResource("15_ep31r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20483, 0, 11.5097)
+
+[node name="Flowers-04" parent="." instance=ExtResource("16_m7dnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69957, 0, 11.5591)
+
+[node name="Flowers-01" parent="." instance=ExtResource("17_d5uvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7664, 0, 13.8372)
+
+[node name="Flowers-03" parent="." instance=ExtResource("18_j880c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17258, 0, 13.8329)
