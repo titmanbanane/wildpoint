@@ -98,9 +98,10 @@ gradient = SubResource("Gradient_ft618")
 render_priority = 0
 shader = ExtResource("3_7jips")
 shader_parameter/angle = 0.05
+shader_parameter/invertbaseuvy = true
 shader_parameter/folliagetexture = ExtResource("4_rsd5j")
 shader_parameter/albedoadd = Color(0.627451, 0.701961, 0.545098, 1)
-shader_parameter/normalmapactive = true
+shader_parameter/normalmapactive = false
 shader_parameter/normalmap = ExtResource("5_v5uvt")
 shader_parameter/normaldepth = 0.0
 shader_parameter/backlightcolor = Color(0.898039, 0.843137, 0.596078, 1)
@@ -113,6 +114,7 @@ gradient = SubResource("Gradient_ft618")
 render_priority = 0
 shader = ExtResource("3_7jips")
 shader_parameter/angle = 0.05
+shader_parameter/invertbaseuvy = true
 shader_parameter/folliagetexture = ExtResource("5_ft618")
 shader_parameter/albedoadd = Color(0.627451, 0.701961, 0.545098, 1)
 shader_parameter/normalmapactive = true
@@ -945,7 +947,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qcj8w")
 
 [node name="trees" type="Node3D"]
-transform = Transform3D(-0.241918, 0, 0.970296, 0, 1, 0, -0.970296, 0, -0.241918, 0, 0, 0)
+transform = Transform3D(0.275633, 0, -0.961262, 0, 1, 0, 0.961262, 0, 0.275633, 0, 0, 0)
 script = ExtResource("1_lsgyr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

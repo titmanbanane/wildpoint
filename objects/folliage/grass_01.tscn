@@ -5,8 +5,8 @@
 [ext_resource type="Shader" uid="uid://dnxb3mstcid66" path="res://objects/folliage/folliage.tres" id="3_hqjy3"]
 
 [sub_resource type="Gradient" id="Gradient_4ifp7"]
-offsets = PackedFloat32Array(0, 0.669014)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.147887, 0.528169)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.592346, 0.519542, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hqjy3"]
 gradient = SubResource("Gradient_4ifp7")
@@ -19,7 +19,7 @@ shader_parameter/folliagetexture = ExtResource("1_oi2q8")
 shader_parameter/albedoadd = Color(0.952549, 0.908454, 0.634375, 1)
 shader_parameter/normalmapactive = false
 shader_parameter/normaldepth = 1.0
-shader_parameter/backlightcolor = Color(0.26069, 0.292112, 0, 1)
+shader_parameter/backlightcolor = Color(0.391044, 0.43544, 0, 1)
 shader_parameter/alphacissorthreshold = SubResource("GradientTexture1D_hqjy3")
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7unse"]
